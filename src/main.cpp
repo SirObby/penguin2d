@@ -100,6 +100,9 @@ int main(int, char**)
     // Our state
     bool show_demo_window = true;
     bool show_another_window = false;
+
+    bool show_tool_1_window = false;
+    bool show_tool_2_window = false;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     // Main loop
@@ -160,6 +163,28 @@ int main(int, char**)
             }
 
             ImGui::End();
+
+            ImGui::Begin("Tools");
+            ImGui::Checkbox("Tool 1", &show_tool_1_window);
+            ImGui::Checkbox("Tool 2", &show_tool_2_window);
+            ImGui::End();
+
+            static int PogCounter = 0;
+
+            if (show_tool_1_window) {
+              ImGui::Begin("Tool 1 window");
+              if (ImGui::Button("Pog"))
+                  PogCounter++;
+              ImGui::SameLine();
+              ImGui::Text("Pog = %d", PogCounter);
+              ImGui::End();
+            }
+            if (show_tool_2_window) {
+              ImGui::Begin("Tool 2 window");
+              ImGui::SameLine();
+              ImGui::Text("POGGERS");
+              ImGui::End();
+}
         }
 
         // 3. Show another simple window.
