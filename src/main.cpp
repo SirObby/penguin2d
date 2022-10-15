@@ -12,6 +12,9 @@
 #endif
 #include <GLFW/glfw3.h> // Will drag system OpenGL headers
 
+#include "project.h"
+#include <fstream>
+
 // [Win32] Our example includes a copy of glfw3.lib pre-compiled with VS2010 to maximize ease of testing and compatibility with old VS compilers.
 // To link with VS2010-era libraries, VS2015+ requires linking with legacy_stdio_definitions.lib, which we do using this pragma.
 // Your own project should not be affected, as you are likely to link with a newer binary of GLFW that is adequate for your version of Visual Studio.
@@ -26,6 +29,8 @@ static void glfw_error_callback(int error, const char* description)
 
 int main(int, char**)
 {
+    Project p;
+
     // Setup window
     glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit())
@@ -55,7 +60,7 @@ int main(int, char**)
 #endif
 
     // Create window with graphics context
-    GLFWwindow* window = glfwCreateWindow(1280, 720, "Dear ImGui GLFW+OpenGL3 example", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(1280, 720, "Penguin2d", NULL, NULL);
     if (window == NULL)
         return 1;
     glfwMakeContextCurrent(window);
@@ -136,6 +141,24 @@ int main(int, char**)
             ImGui::Text("counter = %d", counter);
 
             ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+            ImGui::End();
+
+            ImGui::Begin("Projects");
+
+            if(ImGui::Button("load ./project")) {
+                // The current working directory must contain the file 'project
+                // This file includeas data about the project.
+                
+            }
+            
+            if(ImGui::Button("new ./project")) {
+                // create a file called project
+                std::ofstream projectFile;
+                projectFile.open("./project");
+                //projectFile << "name: " << "project" << std::endl;
+                projectFile.close();
+            }
+
             ImGui::End();
         }
 
