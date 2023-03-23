@@ -1,0 +1,2 @@
+c:\Users\jn-samhaut70\Downloads\cmake-3.25.2-windows-x86_64\cmake-3.25.2-windows-x86_64\bin\cmake.exe -DCMAKE_BUILD_TYPE=Release ..
+c:\Users\jn-samhaut70\Downloads\cmake-3.25.2-windows-x86_64\cmake-3.25.2-windows-x86_64\bin\cmake.exe --build . --config Release
