@@ -152,7 +152,34 @@ int main(int, char**)
             ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
             ImGui::End();
         }
+        //viewport, the main window, like the preview.
+        {
+            ImGui::Begin("Viewport",NULL,ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_MenuBar);
+            //a menubar in which i can open the demo window
+            if (ImGui::BeginMenuBar())
+            {
+                if (ImGui::BeginMenu("File"))
+                {
+                    if (ImGui::MenuItem("Open..", "Ctrl+O")) { /* Do stuff */ }
+                    if (ImGui::MenuItem("Save", "Ctrl+S")) { /* Do stuff */ }
+                    if (ImGui::MenuItem("Close", "Alt+F4")) {
+                        glfwSetWindowShouldClose(window, true);
+                    }
+                    ImGui::EndMenu();
+                }
+                if (ImGui::BeginMenu("Windows"))
+                {
+                    //menu time that is toggleable which will toggle the demo window
+                    if (ImGui::MenuItem("Demo Window", "", &show_demo_window)) { /* Do stuff */ }
+                    ImGui::EndMenu();
+                }
+                ImGui::EndMenuBar();
+            }
+            ImGui::SetWindowSize(ImVec2(1024, 576));
+            //ImGui::SetWindowPos(ImVec2(0, 0));
+            ImGui::End();
 
+        }
         // 3. Show another simple window.
         if (show_another_window)
         {

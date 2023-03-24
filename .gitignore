@@ -2,3 +2,5 @@ projects/test
 build/
 imgui.ini
 .vscode
+cmake-build-debug
+.idea
