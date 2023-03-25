@@ -126,6 +126,27 @@ int main(int, char**)
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
+        if (ImGui::BeginMainMenuBar())
+        {
+            if (ImGui::BeginMenu("File"))
+            {
+                if (ImGui::MenuItem("Open..", "Ctrl+O")) { /* Do stuff */ }
+                if (ImGui::MenuItem("Save", "Ctrl+S")) { /* Do stuff */ }
+                if (ImGui::MenuItem("Close", "Alt+F4")) {
+                    glfwSetWindowShouldClose(window, true);
+                }
+                ImGui::EndMenu();
+            }
+            if (ImGui::BeginMenu("Windows"))
+            {
+                //menu time that is toggleable which will toggle the demo window
+                if (ImGui::MenuItem("Demo Window", "", &show_demo_window)) { /* Do stuff */ }
+                if (ImGui::MenuItem("Another Window", "", &show_another_window)) { /* Do stuff */ }
+                ImGui::EndMenu();
+            }
+            ImGui::EndMainMenuBar();
+        }
+
         // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
         if (show_demo_window)
             ImGui::ShowDemoWindow(&show_demo_window);
@@ -154,27 +175,9 @@ int main(int, char**)
         }
         //viewport, the main window, like the preview.
         {
-            ImGui::Begin("Viewport",NULL,ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_MenuBar);
+            ImGui::Begin("Viewport",NULL,ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse );
             //a menubar in which i can open the demo window
-            if (ImGui::BeginMenuBar())
-            {
-                if (ImGui::BeginMenu("File"))
-                {
-                    if (ImGui::MenuItem("Open..", "Ctrl+O")) { /* Do stuff */ }
-                    if (ImGui::MenuItem("Save", "Ctrl+S")) { /* Do stuff */ }
-                    if (ImGui::MenuItem("Close", "Alt+F4")) {
-                        glfwSetWindowShouldClose(window, true);
-                    }
-                    ImGui::EndMenu();
-                }
-                if (ImGui::BeginMenu("Windows"))
-                {
-                    //menu time that is toggleable which will toggle the demo window
-                    if (ImGui::MenuItem("Demo Window", "", &show_demo_window)) { /* Do stuff */ }
-                    ImGui::EndMenu();
-                }
-                ImGui::EndMenuBar();
-            }
+
             ImGui::SetWindowSize(ImVec2(1024, 576));
             //ImGui::SetWindowPos(ImVec2(0, 0));
             ImGui::End();
