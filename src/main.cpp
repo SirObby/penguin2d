@@ -174,6 +174,7 @@ int main(int, char**)
             ImGui::End();
         }
         //viewport, the main window, like the preview.
+        /*.
         {
             ImGui::Begin("Viewport",NULL,ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse );
             //a menubar in which i can open the demo window
@@ -182,7 +183,7 @@ int main(int, char**)
             //ImGui::SetWindowPos(ImVec2(0, 0));
             ImGui::End();
 
-        }
+        }*/
         // 3. Show another simple window.
         if (show_another_window)
         {

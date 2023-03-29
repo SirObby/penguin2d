@@ -4,3 +4,4 @@ imgui.ini
 .vscode
 cmake-build-debug
 .idea
+build.bat
